@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   VOWORA design tokens — premium, elegant, original.
+   Marketing / dashboard / admin share tokens but compose distinct layouts.
+   Branding (name/logo/palette) is configurable via platform_settings at runtime.
+   ============================================================================= */
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 240 10% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 12%;
+
+    --primary: 350 45% 32%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 36 20% 93%;
+    --secondary-foreground: 240 10% 18%;
+
+    --muted: 36 16% 94%;
+    --muted-foreground: 240 6% 42%;
+
+    --accent: 38 44% 90%;
+    --accent-foreground: 350 45% 28%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 36 18% 88%;
+    --input: 36 18% 86%;
+    --ring: 350 45% 32%;
+
+    --gold: 40 62% 52%;
+    --gold-foreground: 240 10% 12%;
+
+    --radius: 0.75rem;
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-urdu: 'Noto Nastaliq Urdu', serif;
+  }
+
+  .dark {
+    --background: 240 12% 8%;
+    --foreground: 40 20% 96%;
+    --card: 240 12% 11%;
+    --card-foreground: 40 20% 96%;
+    --popover: 240 12% 11%;
+    --popover-foreground: 40 20% 96%;
+    --primary: 350 55% 62%;
+    --primary-foreground: 240 12% 8%;
+    --secondary: 240 10% 16%;
+    --secondary-foreground: 40 20% 96%;
+    --muted: 240 10% 16%;
+    --muted-foreground: 40 8% 64%;
+    --accent: 240 10% 18%;
+    --accent-foreground: 40 20% 96%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 10% 20%;
+    --input: 240 10% 22%;
+    --ring: 350 55% 62%;
+    --gold: 40 62% 58%;
+    --gold-foreground: 240 12% 8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* RTL: mirror layout using logical properties; Urdu uses Nastaliq. */
+  [dir='rtl'] body {
+    font-family: var(--font-urdu), var(--font-sans), serif;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.16);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grain {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(120deg, hsl(40 70% 46%), hsl(40 55% 62%), hsl(350 45% 38%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
